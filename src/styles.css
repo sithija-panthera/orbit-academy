@@ -1,0 +1,92 @@
+:root {
+  --bg: #0b0e13;
+  --panel: #11151d;
+  --panel2: #161b25;
+  --border: #232b3a;
+  --text: #d7dde8;
+  --dim: #7c8797;
+  --accent: #ff6a2b;
+  --green: #4ade80;
+  --red: #f87171;
+  --mono: "SF Mono", ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, Inter, system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#topbar {
+  display: flex; align-items: center; gap: 24px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+  flex: 0 0 auto;
+}
+.brand { font-weight: 800; letter-spacing: 2px; font-size: 15px; }
+.brand .logo { color: var(--accent); margin-right: 6px; }
+.brand .accent { color: var(--accent); }
+.lesson-title { color: var(--dim); font-size: 13px; flex: 1; }
+.controls { display: flex; gap: 8px; }
+.btn {
+  background: var(--panel2); color: var(--text);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 6px 14px; font-size: 13px; cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); }
+.btn:disabled { opacity: 0.4; cursor: default; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #14100c; font-weight: 700; }
+.btn.tiny { padding: 1px 8px; font-size: 11px; }
+
+#layout { flex: 1 1 auto; display: flex; min-height: 0; }
+#sim-pane { flex: 1.2; position: relative; min-width: 0; }
+#sim-canvas { width: 100%; height: 100%; display: block; }
+#hud { position: absolute; top: 10px; left: 10px; font-family: var(--mono); font-size: 11px; pointer-events: none; }
+#hud-status { color: var(--green); margin-bottom: 6px; letter-spacing: 1px; }
+#hud-telemetry { color: var(--dim); white-space: pre; }
+
+#right-pane { flex: 1; display: flex; flex-direction: column; border-left: 1px solid var(--border); min-width: 0; }
+#tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--panel); flex: 0 0 auto; }
+.tab {
+  background: none; border: none; color: var(--dim);
+  padding: 10px 18px; font-size: 13px; cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.tab.active { color: var(--text); border-bottom-color: var(--accent); }
+.tab-body { flex: 1; display: none; min-height: 0; flex-direction: column; }
+.tab-body.active { display: flex; }
+#editor { flex: 1; min-height: 0; }
+
+#tab-tutor { padding: 10px; gap: 8px; }
+#chat-log { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding: 4px; }
+.msg { max-width: 92%; padding: 8px 12px; border-radius: 10px; font-size: 13px; line-height: 1.5; white-space: pre-wrap; }
+.msg.user { align-self: flex-end; background: #2a3242; }
+.msg.bot { align-self: flex-start; background: var(--panel2); border: 1px solid var(--border); }
+.msg.bot code { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+#chat-form { display: flex; gap: 8px; }
+#chat-input, #api-key {
+  flex: 1; background: var(--panel2); border: 1px solid var(--border);
+  color: var(--text); border-radius: 6px; padding: 8px 10px; font-size: 13px;
+}
+#api-key-row { display: flex; gap: 8px; }
+
+#tab-topics { padding: 10px; overflow-y: auto; }
+#topics-list { font-family: var(--mono); font-size: 12px; }
+.topic-row { padding: 8px; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px; }
+.topic-name { color: var(--accent); }
+.topic-rate { color: var(--dim); }
+.topic-msg { color: var(--dim); margin-top: 4px; white-space: pre-wrap; word-break: break-all; flex-basis: 100%; }
+
+#console-pane {
+  flex: 0 0 150px; border-top: 1px solid var(--border);
+  background: var(--panel); display: flex; flex-direction: column;
+}
+.console-header { padding: 4px 10px; font-size: 11px; color: var(--dim); letter-spacing: 1px; text-transform: uppercase; }
+#console-out { flex: 1; overflow-y: auto; font-family: var(--mono); font-size: 12px; padding: 4px 10px; }
+.log-line { white-space: pre-wrap; line-height: 1.5; }
+.log-line.err { color: var(--red); }
+.log-line.sys { color: var(--dim); }

@@ -1,0 +1,134 @@
+
+  VITE v8.2.1  ready in 308 ms
+
+  ➜  Local:   http://localhost:5199/
+  ➜  Network: use --host to expose
+(!) Failed to run dependency scan. Skipping dependency pre-bundling. Error: The following dependencies are imported but could not be resolved:
+
+  monaco-editor/esm/vs/language/typescript/ts.worker?worker (imported by /Users/sithijavihangaranaraja/projects/robotics-academy/src/main.js)
+  monaco-editor/esm/vs/editor/editor.worker?worker (imported by /Users/sithijavihangaranaraja/projects/robotics-academy/src/main.js)
+
+Are they installed?
+    at file:///Users/sithijavihangaranaraja/projects/robotics-academy/node_modules/vite/dist/node/chunks/node.js:32102:33
+    at async file:///Users/sithijavihangaranaraja/projects/robotics-academy/node_modules/vite/dist/node/chunks/node.js:34370:15
+1:49:26 am [vite] (client) Pre-transform error: Failed to resolve import "monaco-editor/esm/vs/editor/editor.worker?worker" from "src/main.js". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/sithijavihangaranaraja/projects/robotics-academy/src/main.js:2:26
+  1  |  import * as monaco from 'monaco-editor';
+  2  |  import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+     |                            ^
+  3  |  import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+  4  |  import { Sim } from './sim/sim.js';
+1:49:27 am [vite] (client) dependencies optimized: @dimforge/rapier3d-compat, monaco-editor, three
+1:50:22 am [vite] (client) page reload tools/shot.mjs
+1:50:29 am [vite] (client) Pre-transform error: Failed to resolve import "monaco-editor/esm/vs/editor/editor.worker?worker" from "src/main.js". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/sithijavihangaranaraja/projects/robotics-academy/src/main.js:2:26
+  1  |  import * as monaco from 'monaco-editor';
+  2  |  import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+     |                            ^
+  3  |  import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+  4  |  import { Sim } from './sim/sim.js';
+1:50:29 am [vite] Internal server error: Failed to resolve import "monaco-editor/esm/vs/editor/editor.worker?worker" from "src/main.js". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/sithijavihangaranaraja/projects/robotics-academy/src/main.js:2:26
+  1  |  import * as monaco from 'monaco-editor';
+  2  |  import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+     |                            ^
+  3  |  import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+  4  |  import { Sim } from './sim/sim.js';
+      at TransformPluginContext._formatLog (file:///Users/sithijavihangaranaraja/projects/robotics-academy/node_modules/vite/dist/node/chunks/node.js:31066:39)
+      at TransformPluginContext.error (file:///Users/sithijavihangaranaraja/projects/robotics-academy/node_modules/vite/dist/node/chunks/node.js:31063:14)
+      at normalizeUrl (file:///Users/sithijavihangaranaraja/projects/robotics-academy/node_modules/vite/dist/node/chunks/node.js:28008:18)
+      at async file:///Users/sithijavihangaranaraja/projects/robotics-academy/node_modules/vite/dist/node/chunks/node.js:28076:30
+      at async Promise.all (index 1)
+      at async TransformPluginContext.transform (file:///Users/sithijavihangaranaraja/projects/robotics-academy/node_modules/vite/dist/node/chunks/node.js:28044:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/sithijavihangaranaraja/projects/robotics-academy/node_modules/vite/dist/node/chunks/node.js:30851:14)
+      at async loadAndTransform (file:///Users/sithijavihangaranaraja/projects/robotics-academy/node_modules/vite/dist/node/chunks/node.js:20619:26)
+      at async viteTransformMiddleware (file:///Users/sithijavihangaranaraja/projects/robotics-academy/node_modules/vite/dist/node/chunks/node.js:25142:20)
+1:50:32 am [vite] (client) page reload shots/01-load.png
+1:50:51 am [vite] (client) page reload src/main.js
+1:50:56 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:50:56 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:51:13 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:51:13 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:51:38 am [vite] (client) page reload src/sim/sim.js
+1:51:43 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:51:43 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:52:27 am [vite] (client) page reload src/sim/sim.js
+1:52:30 am [vite] (client) page reload src/sim/sim.js
+1:52:37 am [vite] (client) page reload src/main.js
+1:52:52 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:52:52 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:53:28 am [vite] (client) page reload src/sim/sim.js
+1:53:35 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:53:35 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:53:59 am [vite] (client) page reload src/sim/sim.js
+1:54:05 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:54:05 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:54:28 am [vite] (client) page reload src/sim/sim.js
+1:54:34 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:54:34 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:55:00 am [vite] (client) page reload src/sim/sim.js
+1:55:08 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:55:08 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:55:34 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:55:34 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:55:45 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:55:45 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:55:51 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:55:51 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:56:16 am [vite] (client) page reload src/ros/miniros.js
+1:56:21 am [vite] (client) page reload src/ros/miniros.js
+1:56:28 am [vite] (client) page reload src/ros/miniros.js
+1:56:32 am [vite] (client) page reload src/ros/miniros.js
+1:56:36 am [vite] (client) page reload src/ros/miniros.js
+1:56:42 am [vite] (client) page reload src/sim/sim.js
+1:56:49 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:56:49 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:57:02 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:57:02 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:58:35 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:58:35 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:58:55 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:58:55 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+2:00:31 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+2:00:31 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+2:00:50 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+2:00:51 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+2:01:26 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+2:01:26 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+2:02:37 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+2:02:37 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+2:04:36 am [vite] (client) page reload src/runner.js
+2:04:41 am [vite] (client) page reload src/ros/miniros.js
+2:04:47 am [vite] (client) page reload src/ros/miniros.js
+2:04:54 am [vite] (client) page reload src/sim/sim.js
+2:05:00 am [vite] (client) page reload src/sim/sim.js
+2:05:04 am [vite] (client) page reload src/sim/sim.js
+2:05:09 am [vite] (client) page reload src/sim/sim.js
+2:05:20 am [vite] (client) page reload src/sim/sim.js
+2:05:29 am [vite] (client) page reload src/sim/sim.js
+2:05:35 am [vite] (client) page reload src/sim/sim.js
+2:05:42 am [vite] (client) page reload src/sim/sim.js
+2:05:51 am [vite] (client) page reload src/main.js
+2:05:54 am [vite] (client) page reload src/main.js
+2:05:58 am [vite] (client) page reload src/main.js
+2:06:05 am [vite] (client) page reload src/main.js
+2:06:10 am [vite] (client) page reload src/main.js
+2:06:15 am [vite] (client) page reload src/main.js
+2:06:21 am [vite] (client) page reload src/main.js
+2:06:26 am [vite] (client) page reload src/ai/gemini.js
+2:06:33 am [vite] (client) page reload src/ai/gemini.js
+2:06:37 am [vite] (client) hmr update /src/styles.css?direct
+2:06:44 am [vite] (client) hmr update /src/styles.css?direct
+2:06:52 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+2:06:52 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+2:07:12 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+2:07:12 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+2:07:46 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+2:07:47 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+2:08:06 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+2:08:06 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+2:08:28 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+2:08:28 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
