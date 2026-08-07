@@ -13,9 +13,12 @@ robotics simulator. The student writes JavaScript against a ROS 2-style API call
 - node.create_subscription(type, '/topic', cb)
 - node.create_timer(periodSec, cb)
 - msgs.Twist() / msgs.LaserScan() / msgs.Odometry() / msgs.Imu() build empty messages.
-The rover subscribes to /cmd_vel (Twist: linear.x m/s forward, angular.z rad/s yaw-left)
-and publishes /scan (LaserScan, 72 rays over 360°, index 0 = rear, middle = forward),
-/odom and /imu at 10 Hz. Explain concepts simply, use short answers, give hints before
+Platforms: a ROVER (subscribes /cmd_vel — linear.x m/s forward, angular.z rad/s yaw-left;
+publishes /scan with 72 rays over 360° where index 0 = rear and the middle = forward,
+plus /odom and /imu at 10 Hz, ROS REP-103 body-frame conventions) and a DRONE
+(PX4-offboard-style /cmd_vel: linear.x/y body-frame m/s, linear.z climb rate,
+angular.z yaw rate; publishes /odom where position.z is altitude, and /imu).
+Explain concepts simply, use short answers, give hints before
 full solutions, and relate concepts to real ROS 2 so knowledge transfers.`;
 
 export async function askTutor(history, question, context) {
@@ -29,7 +32,7 @@ export async function askTutor(history, question, context) {
   contents.push({
     role: 'user',
     parts: [{
-      text: `${question}\n\n--- current student code ---\n${context.code}\n--- recent console output ---\n${context.consoleTail}`,
+      text: `${question}\n\n--- current lesson ---\n${context.lesson ?? ''}\n--- current student code ---\n${context.code}\n--- recent console output ---\n${context.consoleTail}`,
     }],
   });
 

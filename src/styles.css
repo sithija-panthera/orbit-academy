@@ -30,7 +30,19 @@ body {
 .brand { font-weight: 800; letter-spacing: 2px; font-size: 15px; }
 .brand .logo { color: var(--accent); margin-right: 6px; }
 .brand .accent { color: var(--accent); }
-.lesson-title { color: var(--dim); font-size: 13px; flex: 1; }
+#lesson-select {
+  background: var(--panel2); color: var(--text);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 6px 10px; font-size: 13px; max-width: 320px;
+}
+.lesson-goal { color: var(--dim); font-size: 12px; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#goal-toast {
+  position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+  background: var(--accent); color: #14100c; font-weight: 800;
+  padding: 10px 22px; border-radius: 8px; font-size: 15px; letter-spacing: 1px;
+  box-shadow: 0 4px 24px rgba(255, 106, 43, 0.5);
+}
+#goal-toast.hidden { display: none; }
 .controls { display: flex; gap: 8px; }
 .btn {
   background: var(--panel2); color: var(--text);
@@ -82,7 +94,7 @@ body {
 .topic-msg { color: var(--dim); margin-top: 4px; white-space: pre-wrap; word-break: break-all; flex-basis: 100%; }
 
 #console-pane {
-  flex: 0 0 150px; border-top: 1px solid var(--border);
+  flex: 0 0 150px; min-height: 0; max-height: 150px; border-top: 1px solid var(--border);
   background: var(--panel); display: flex; flex-direction: column;
 }
 .console-header { padding: 4px 10px; font-size: 11px; color: var(--dim); letter-spacing: 1px; text-transform: uppercase; }

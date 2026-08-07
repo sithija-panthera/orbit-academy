@@ -50,6 +50,7 @@ export class Sim {
     this.scene.add(new THREE.HemisphereLight(0x44557a, 0x2a2018, 1.6));
     this.scene.add(new THREE.AmbientLight(0x404550, 0.6));
 
+    this._disposed = false;
     const onResize = () => {
       const w = this.canvas.clientWidth, h = this.canvas.clientHeight;
       this.renderer.setSize(w, h, false);
@@ -57,7 +58,8 @@ export class Sim {
       this.camera.aspect = w / h;
       this.camera.updateProjectionMatrix();
     };
-    new ResizeObserver(onResize).observe(this.canvas);
+    this._resizeObserver = new ResizeObserver(onResize);
+    this._resizeObserver.observe(this.canvas);
     onResize();
   }
 
@@ -190,11 +192,42 @@ export class Sim {
     }
   }
 
+  // Optional glowing goal beacon, used by the lesson system.
+  setGoal(goal) {
+    if (this.goalMesh) { this.scene.remove(this.goalMesh); this.goalMesh = null; }
+    this.goal = goal ?? null;
+    if (!goal) return;
+    const g = new THREE.Group();
+    const ring = new THREE.Mesh(
+      new THREE.TorusGeometry(goal.radius ?? 0.8, 0.05, 12, 40),
+      new THREE.MeshBasicMaterial({ color: 0xff6a2b }));
+    ring.rotation.x = Math.PI / 2;
+    ring.position.y = 0.05;
+    g.add(ring);
+    const beam = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.06, 0.06, 4, 10),
+      new THREE.MeshBasicMaterial({ color: 0xff6a2b, transparent: true, opacity: 0.35 }));
+    beam.position.y = 2;
+    g.add(beam);
+    g.position.set(goal.x, 0, goal.z);
+    this.goalMesh = g;
+    this.scene.add(g);
+  }
+
+  dispose() {
+    this._disposed = true;
+    this._resizeObserver.disconnect();
+    graph.topic('/cmd_vel').systemSubscribers.delete(this._cmdVelListener);
+    this.renderer.dispose();
+    this.world.free();
+  }
+
   _wireTopics() {
-    graph.topic('/cmd_vel', 'geometry_msgs/Twist').systemSubscribers.add((msg) => {
+    this._cmdVelListener = (msg) => {
       this.cmdVel.linear = clamp(msg?.linear?.x ?? 0, -1.5, 1.5);
       this.cmdVel.angular = clamp(msg?.angular?.z ?? 0, -3, 3);
-    });
+    };
+    graph.topic('/cmd_vel', 'geometry_msgs/Twist').systemSubscribers.add(this._cmdVelListener);
     this.scanTopic = graph.topic('/scan', 'sensor_msgs/LaserScan');
     this.odomTopic = graph.topic('/odom', 'nav_msgs/Odometry');
     this.imuTopic = graph.topic('/imu', 'sensor_msgs/Imu');
@@ -321,6 +354,7 @@ export class Sim {
     let last = performance.now();
     let acc = 0;
     const step = (now) => {
+      if (this._disposed) return;
       requestAnimationFrame(step);
       acc += Math.min((now - last) / 1000, 0.25); // cap: no spiral after tab sleep
       last = now;
