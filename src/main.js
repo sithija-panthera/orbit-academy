@@ -7,6 +7,7 @@ import { Runner } from './runner.js';
 import { graph } from './ros/miniros.js';
 import { LESSONS } from './lessons.js';
 import { askTutor, getApiKey, setApiKey } from './ai/gemini.js';
+import { getSession, recordCompletion } from './auth.js';
 
 self.MonacoEnvironment = {
   getWorker(_, label) {
@@ -60,9 +61,22 @@ const runner = new Runner({
     btnStop.disabled = !running;
     hudStatus.textContent = running ? 'CODE RUNNING' : 'SIM READY';
     hudStatus.style.color = running ? 'var(--accent)' : 'var(--green)';
-    if (running) { goalState = {}; goalDone = false; goalToast.classList.add('hidden'); }
+    if (running) {
+      goalState = {}; goalDone = false; goalToast.classList.add('hidden');
+      runStartedAt = performance.now();
+    }
   },
 });
+let runStartedAt = 0;
+
+// account chip
+const userChip = document.getElementById('user-chip');
+function renderUserChip() {
+  const session = getSession();
+  userChip.textContent = session ? `◉ ${session.name}` : 'Sign in to save progress';
+  userChip.classList.toggle('signed-in', !!session);
+}
+renderUserChip();
 
 // ---------- lessons + sim lifecycle ----------
 const lessonSelect = document.getElementById('lesson-select');
@@ -131,6 +145,12 @@ setInterval(() => {
       goalDone = true;
       goalToast.classList.remove('hidden');
       logLine(`🏁 GOAL COMPLETE — ${currentLesson.title}`, 'sys');
+      const secs = (performance.now() - runStartedAt) / 1000;
+      if (recordCompletion(currentLesson.id, secs)) {
+        logLine(`progress saved (${secs.toFixed(1)}s)`, 'sys');
+      } else {
+        logLine('sign in on the Dashboard to save progress', 'sys');
+      }
     }
   } catch (e) {
     logLine(`goal checker error: ${e.message}`, 'err');

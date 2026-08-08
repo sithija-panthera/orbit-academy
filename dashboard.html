@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbit Academy · Dashboard</title>
+  <link rel="stylesheet" href="/src/landing.css" />
+  <link rel="stylesheet" href="/src/dashboard.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="./index.html"><span class="logo">◱</span> ORBIT<span class="accent">ACADEMY</span></a>
+    <nav class="nav-links">
+      <a href="./index.html">Home</a>
+      <a class="btn-launch" href="./app.html">Launch simulator</a>
+    </nav>
+  </header>
+
+  <main class="dash">
+    <!-- signed-out: auth panel -->
+    <section id="auth-panel" class="hidden">
+      <div class="auth-card">
+        <h1 id="auth-title">Sign in</h1>
+        <p class="auth-sub">Track lesson completions and best times on this device.</p>
+        <form id="auth-form">
+          <label>Call sign<input id="auth-name" type="text" autocomplete="username" maxlength="24" required /></label>
+          <label>Password<input id="auth-pass" type="password" autocomplete="current-password" required /></label>
+          <div id="auth-error" class="auth-error"></div>
+          <button class="btn-launch big wide" type="submit" id="auth-submit">Sign in</button>
+        </form>
+        <button id="auth-toggle" class="auth-toggle">New here? Create an account</button>
+        <p class="auth-note">Accounts are stored in this browser only (v1) — cloud sync is coming.</p>
+      </div>
+    </section>
+
+    <!-- signed-in: dashboard -->
+    <section id="dash-panel" class="hidden">
+      <div class="dash-head">
+        <div>
+          <h1 id="dash-hello">Welcome back</h1>
+          <div class="dash-sub" id="dash-since"></div>
+        </div>
+        <button id="btn-logout" class="btn-ghost">Sign out</button>
+      </div>
+
+      <div class="stat-row" id="stat-row"></div>
+
+      <h2 class="dash-section">Missions</h2>
+      <div id="mission-list"></div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/dashboard.js"></script>
+</body>
+</html>

@@ -154,3 +154,12 @@ Are they installed?
 2:26:59 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
 2:27:18 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
 2:27:18 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+3:58:56 pm [vite] (client) page reload index.html
+3:58:56 pm [vite] (client) page reload app.html
+3:59:55 pm [vite] (client) page reload index.html
+4:00:54 pm [vite] (client) page reload dashboard.html
+4:01:32 pm [vite] (client) page reload app.html
+4:01:38 pm [vite] (client) hmr update /src/styles.css?direct
+4:01:43 pm [vite] (client) page reload src/main.js
+4:01:50 pm [vite] (client) page reload src/main.js
+4:01:59 pm [vite] (client) page reload src/main.js

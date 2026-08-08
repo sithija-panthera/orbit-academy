@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbit Academy · Simulator</title>
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <header id="topbar">
+    <div class="brand"><span class="logo">◱</span> ORBIT<span class="accent">ACADEMY</span></div>
+    <select id="lesson-select" aria-label="Lesson"></select>
+    <div class="lesson-goal" id="lesson-goal"></div>
+    <a id="user-chip" href="./dashboard.html" title="Dashboard"></a>
+    <div class="controls">
+      <button id="btn-run" class="btn primary">▶ Run</button>
+      <button id="btn-stop" class="btn" disabled>■ Stop</button>
+      <button id="btn-reset" class="btn">⟲ Reset Sim</button>
+    </div>
+  </header>
+
+  <main id="layout">
+    <section id="sim-pane">
+      <canvas id="sim-canvas"></canvas>
+      <div id="hud">
+        <div id="hud-status">SIM READY</div>
+        <div id="hud-telemetry"></div>
+      </div>
+      <div id="goal-toast" class="hidden">🏁 GOAL COMPLETE</div>
+    </section>
+
+    <section id="right-pane">
+      <nav id="tabs">
+        <button class="tab active" data-tab="code">Code</button>
+        <button class="tab" data-tab="tutor">AI Tutor</button>
+        <button class="tab" data-tab="topics">Topics</button>
+      </nav>
+      <div id="tab-code" class="tab-body active">
+        <div id="editor"></div>
+      </div>
+      <div id="tab-tutor" class="tab-body">
+        <div id="chat-log"></div>
+        <form id="chat-form">
+          <input id="chat-input" type="text" placeholder="Ask the tutor… e.g. why does my rover spin in circles?" autocomplete="off" />
+          <button class="btn primary" type="submit">Send</button>
+        </form>
+        <div id="api-key-row">
+          <input id="api-key" type="password" placeholder="Gemini API key (stored locally)" />
+          <button id="btn-save-key" class="btn">Save</button>
+        </div>
+      </div>
+      <div id="tab-topics" class="tab-body">
+        <div id="topics-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <section id="console-pane">
+    <div class="console-header">Console <button id="btn-clear-console" class="btn tiny">clear</button></div>
+    <div id="console-out"></div>
+  </section>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

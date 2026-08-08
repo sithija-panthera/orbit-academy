@@ -44,6 +44,13 @@ body {
 }
 #goal-toast.hidden { display: none; }
 .controls { display: flex; gap: 8px; }
+#user-chip {
+  font-family: var(--mono); font-size: 12px; color: var(--dim);
+  text-decoration: none; border: 1px solid var(--border); border-radius: 14px;
+  padding: 5px 12px; white-space: nowrap;
+}
+#user-chip:hover { border-color: var(--accent); color: var(--text); }
+#user-chip.signed-in { color: var(--green); }
 .btn {
   background: var(--panel2); color: var(--text);
   border: 1px solid var(--border); border-radius: 6px;
