@@ -2,3 +2,5 @@ node_modules
 shots
 vite.log
 dist
+dist
+preview.log
