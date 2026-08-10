@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!-- Universal Robots UR5 — flattened from the official ur_description xacro
+     (BSD/Apache, ROS-Industrial). Real DH kinematics: d1=0.089159, a2=0.425,
+     a3=0.39225, d4=0.10915, d5=0.09465, d6=0.0823. Frames per REP-103 (z-up). -->
+<robot name="ur5">
+  <link name="base_link">
+    <visual><geometry><mesh filename="meshes/base.dae"/></geometry></visual>
+  </link>
+
+  <link name="shoulder_link">
+    <visual><geometry><mesh filename="meshes/shoulder.dae"/></geometry></visual>
+  </link>
+  <joint name="shoulder_pan_joint" type="revolute">
+    <parent link="base_link"/><child link="shoulder_link"/>
+    <origin xyz="0 0 0.089159" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-6.2832" upper="6.2832" effort="150" velocity="3.15"/>
+  </joint>
+
+  <link name="upper_arm_link">
+    <visual><geometry><mesh filename="meshes/upperarm.dae"/></geometry></visual>
+  </link>
+  <joint name="shoulder_lift_joint" type="revolute">
+    <parent link="shoulder_link"/><child link="upper_arm_link"/>
+    <origin xyz="0 0.13585 0" rpy="0 1.570796 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.2832" upper="6.2832" effort="150" velocity="3.15"/>
+  </joint>
+
+  <link name="forearm_link">
+    <visual><geometry><mesh filename="meshes/forearm.dae"/></geometry></visual>
+  </link>
+  <joint name="elbow_joint" type="revolute">
+    <parent link="upper_arm_link"/><child link="forearm_link"/>
+    <origin xyz="0 -0.1197 0.425" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.1416" upper="3.1416" effort="150" velocity="3.15"/>
+  </joint>
+
+  <link name="wrist_1_link">
+    <visual><geometry><mesh filename="meshes/wrist1.dae"/></geometry></visual>
+  </link>
+  <joint name="wrist_1_joint" type="revolute">
+    <parent link="forearm_link"/><child link="wrist_1_link"/>
+    <origin xyz="0 0 0.39225" rpy="0 1.570796 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.2832" upper="6.2832" effort="28" velocity="3.2"/>
+  </joint>
+
+  <link name="wrist_2_link">
+    <visual><geometry><mesh filename="meshes/wrist2.dae"/></geometry></visual>
+  </link>
+  <joint name="wrist_2_joint" type="revolute">
+    <parent link="wrist_1_link"/><child link="wrist_2_link"/>
+    <origin xyz="0 0.093 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-6.2832" upper="6.2832" effort="28" velocity="3.2"/>
+  </joint>
+
+  <link name="wrist_3_link">
+    <visual><geometry><mesh filename="meshes/wrist3.dae"/></geometry></visual>
+  </link>
+  <joint name="wrist_3_joint" type="revolute">
+    <parent link="wrist_2_link"/><child link="wrist_3_link"/>
+    <origin xyz="0 0 0.09465" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-6.2832" upper="6.2832" effort="28" velocity="3.2"/>
+  </joint>
+</robot>

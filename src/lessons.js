@@ -191,7 +191,7 @@ node.get_logger().info('flying to the ring…');
         Math.hypot(t.cubeX - t.dropZone.x, t.cubeZ - t.dropZone.z) < t.dropZone.radius &&
         t.cubeY < 0.12;
     },
-    starterCode: `// Lesson 5: pick and place with a 3-DOF arm.
+    starterCode: `// Lesson 5: pick and place with a UR5 (driving 3 of its 6 joints).
 // Command joint angles on /joint_cmd: [yaw, shoulder, elbow] (radians).
 // The gripper: publish 'close' / 'open' on /gripper_cmd.
 // The cube sits at radius 0.55 m, yaw 0. The drop zone is at yaw +90°.
@@ -203,7 +203,7 @@ const gripPub = node.create_publisher('std_msgs/String', '/gripper_cmd');
 // --- 2-link inverse kinematics (this is the lesson!) ---
 // r: horizontal reach from the base axis, h: height of the wrist ABOVE the shoulder.
 // Returns [shoulder, elbow] angles, elbow-down.
-const L1 = 0.45, L2 = 0.40, SHOULDER_H = 0.35, HAND = 0.15;
+const L1 = 0.425, L2 = 0.39225, SHOULDER_H = 0.35, HAND = 0.15;
 function ik(r, wristY) {
   const h = wristY - SHOULDER_H;
   const d2 = r * r + h * h, d = Math.sqrt(d2);

@@ -223,6 +223,58 @@ function fmtNum(v) {
   return +v.toFixed(3);
 }
 
+// ---------- Robot tab: teach the URDF behind the current platform ----------
+const robotInfo = document.getElementById('robot-info');
+async function renderRobotTab() {
+  const info = sim?.urdfInfo;
+  robotInfo.innerHTML = '';
+  if (!info) {
+    const note = document.createElement('div');
+    note.className = 'urdf-note';
+    note.textContent = 'This platform uses a custom physics model — no standard URDF exists for it. ' +
+      'The rover and arm lessons load real robot URDFs (Clearpath Husky, UR5); switch to one of those to explore the format.';
+    robotInfo.appendChild(note);
+    return;
+  }
+  const h = document.createElement('h3');
+  h.textContent = info.name;
+  const sub = document.createElement('div');
+  sub.className = 'robot-sub';
+  sub.textContent = `${info.path} — the same URDF format used by real ROS 2 robots`;
+  robotInfo.append(h, sub);
+
+  try {
+    const src = await (await fetch(info.path)).text();
+    // joint table parsed straight from the URDF source
+    const joints = [...src.matchAll(/<joint name="([^"]+)" type="([^"]+)">([\s\S]*?)<\/joint>/g)];
+    const table = document.createElement('table');
+    table.className = 'joint-table';
+    table.innerHTML = '<thead><tr><th>joint</th><th>type</th><th>axis</th><th>limits (rad)</th></tr></thead>';
+    const tbody = document.createElement('tbody');
+    for (const [, name, type, body] of joints) {
+      const axis = body.match(/<axis xyz="([^"]+)"/)?.[1] ?? '—';
+      const lim = body.match(/lower="([^"]+)" upper="([^"]+)"/);
+      const tr = document.createElement('tr');
+      for (const val of [name, type, axis, lim ? `${(+lim[1]).toFixed(2)} … ${(+lim[2]).toFixed(2)}` : '—']) {
+        const td = document.createElement('td');
+        td.textContent = val;
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+    robotInfo.appendChild(table);
+    const pre = document.createElement('div');
+    pre.className = 'urdf-source';
+    pre.textContent = src;
+    robotInfo.appendChild(pre);
+  } catch (e) {
+    robotInfo.append(Object.assign(document.createElement('div'),
+      { className: 'urdf-note', textContent: `Could not load URDF: ${e.message}` }));
+  }
+}
+document.querySelector('[data-tab="robot"]').addEventListener('click', renderRobotTab);
+
 // ---------- AI tutor ----------
 const chatLog = document.getElementById('chat-log');
 const chatForm = document.getElementById('chat-form');

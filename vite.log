@@ -232,3 +232,142 @@ Are they installed?
 11:49:56 am [vite] (client) hmr update /src/landing.css?direct
 11:49:56 am [vite] (client) page reload index.html
 11:50:04 am [vite] (client) page reload src/ai/gemini.js
+1:02:32 pm [vite] (client) page reload src/sim/sim.js
+1:02:44 pm [vite] (client) page reload src/sim/sim.js
+1:02:55 pm [vite] (client) page reload src/sim/sim.js
+1:03:09 pm [vite] (client) dependency optimized: urdf-loader
+1:03:09 pm [vite] (client) optimized dependencies changed. reloading
+1:03:10 pm [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:03:10 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:03:11 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:11 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:11 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:11 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:11 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:11 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:11 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:11 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:11 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:43 pm [vite] (client) page reload src/sim/sim.js
+1:03:44 pm [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:03:44 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:03:45 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:45 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:45 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:45 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:45 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:45 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:45 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:45 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:03:45 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:25 pm [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:04:25 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:04:25 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:25 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:25 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:25 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:25 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:26 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:26 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:26 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:26 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:50 pm [vite] (client) page reload src/sim/sim.js
+1:04:57 pm [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:04:57 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:04:58 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:58 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:58 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:58 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:58 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:59 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:59 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:59 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:04:59 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:05:52 pm [vite] (client) page reload src/lessons.js
+1:05:52 pm [vite] (client) page reload src/sim/arm.js
+1:06:07 pm [vite] (client) page reload src/sim/arm.js
+1:06:18 pm [vite] (client) page reload src/sim/arm.js
+1:06:19 pm [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:06:19 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:06:19 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:19 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:19 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:19 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:19 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:20 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:20 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:20 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:20 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:23 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:06:23 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:23 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:23 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:23 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:23 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:23 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:24 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:36 pm [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:06:36 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:06:36 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:36 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:36 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:36 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:36 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:37 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:37 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:37 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:37 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:42 pm [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:06:42 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:06:42 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:42 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:42 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:42 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:42 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:43 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:43 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:43 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:43 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:46 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:06:46 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:46 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:47 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:47 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:47 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:47 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:06:47 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:07:12 pm [vite] (client) hmr update /src/styles.css?direct
+1:07:12 pm [vite] (client) page reload app.html
+1:07:26 pm [vite] (client) page reload src/main.js
+1:07:40 pm [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:07:40 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:07:40 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:07:40 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:07:40 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:07:40 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:07:40 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:07:41 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:07:41 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:07:41 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:07:41 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:08:10 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:08:27 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:08:27 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:08:27 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:08:27 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:08:28 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:08:28 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:08:28 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:08:28 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:09:02 pm [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+1:09:02 pm [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+1:09:03 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:09:03 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:09:03 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:09:03 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:09:03 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:09:03 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:09:03 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:09:03 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:09:03 pm [vite] (client) [console.warn] THREE.ColladaLoader: You are loading an asset with a Z-UP coordinate system. The loader just rotates the asset to transform it into Y-UP. The vertex data are not converted, see #24289.
+1:09:30 pm [vite] (client) page reload index.html

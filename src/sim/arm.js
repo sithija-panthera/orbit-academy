@@ -6,9 +6,11 @@
 import * as THREE from 'three';
 import RAPIER from '@dimforge/rapier3d-compat';
 import { graph } from '../ros/miniros.js';
+import { loadURDF } from './urdf.js';
 
-const L1 = 0.45;          // upper arm
-const L2 = 0.40;          // forearm
+// Universal Robots UR5 kinematics (matches public/robots/ur5/ur5.urdf)
+const L1 = 0.425;         // upper arm (a2)
+const L2 = 0.39225;       // forearm (a3)
 const HAND_DROP = 0.18;   // gripper hangs this far below the forearm tip
 const SHOULDER_H = 0.35;  // shoulder pivot height
 export const ARM_GEOM = { L1, L2, HAND_DROP, SHOULDER_H };
@@ -32,6 +34,7 @@ export class ArmSim {
     this.world = new RAPIER.World({ x: 0, y: -9.81, z: 0 });
     this._buildArena();
     this._buildArm();
+    this._loadUR5();
     this._buildCube();
     this._wireTopics();
     this._loop();
@@ -178,6 +181,40 @@ export class ArmSim {
     for (const j of this.joints) j.setContactsEnabled(false);
   }
 
+  _loadUR5() {
+    this.urdfInfo = { name: 'Universal Robots UR5', path: 'robots/ur5/ur5.urdf' };
+    loadURDF(this.urdfInfo.path).then(({ robot, wrapper }) => {
+      if (this._disposed) return;
+      this.urdfRobot = robot;
+      // lab pedestal so the UR5 shoulder (0.089 m) lands at SHOULDER_H
+      const standH = SHOULDER_H - 0.089159;
+      const stand = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.12, standH, 24),
+        new THREE.MeshStandardMaterial({ color: 0x2c3546, roughness: 0.7 }));
+      stand.position.y = standH / 2;
+      stand.castShadow = true;
+      this.scene.add(stand);
+      wrapper.position.y = standH;
+      this.scene.add(wrapper);
+      // hide the procedural links; keep base stand + gripper + cube
+      this.hubMesh.visible = false;
+      this.upperMesh.visible = false;
+      this.foreMesh.visible = false;
+    }).catch((e) => console.warn('UR5 URDF failed to load, using fallback model:', e));
+  }
+
+  // measured physics angles → UR5 joint values (UR sign convention: lift/elbow positive = down)
+  _syncURDF() {
+    if (!this.urdfRobot) return;
+    const [yaw, sh, el] = this._jointAngles();
+    const j = this.urdfRobot.joints;
+    j.shoulder_pan_joint?.setJointValue(yaw);
+    j.shoulder_lift_joint?.setJointValue(-sh);
+    j.elbow_joint?.setJointValue(-el);
+    j.wrist_1_joint?.setJointValue(Math.PI / 2 + sh + el);
+    j.wrist_2_joint?.setJointValue(-Math.PI / 2);
+    j.wrist_3_joint?.setJointValue(0);
+  }
+
   _buildCube() {
     this.cube = this.world.createRigidBody(
       RAPIER.RigidBodyDesc.dynamic().setTranslation(CUBE_POS.x, CUBE_POS.y, CUBE_POS.z).setCanSleep(false));
@@ -318,6 +355,7 @@ export class ArmSim {
     sync(this.fore, this.foreMesh);
     sync(this.hand, this.handMesh);
     sync(this.cube, this.cubeMesh);
+    this._syncURDF();
     const gap = this.gripperClosed ? 0.028 : 0.045;
     for (const f of this.fingers) f.mesh.position.z = f.side * gap;
   }

@@ -2,5 +2,6 @@
   - ESM syntax in a file loaded as CommonJS (vite.config.js:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
 Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
 Port 5200 is in use, trying another one...
-  ➜  Local:   http://localhost:5201/
+Port 5201 is in use, trying another one...
+  ➜  Local:   http://localhost:5202/
   ➜  Network: use --host to expose

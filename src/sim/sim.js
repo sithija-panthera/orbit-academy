@@ -4,10 +4,12 @@
 import * as THREE from 'three';
 import RAPIER from '@dimforge/rapier3d-compat';
 import { graph, msgs } from '../ros/miniros.js';
+import { loadURDF } from './urdf.js';
 
-const WHEEL_RADIUS = 0.14;
-const TRACK = 0.62;       // wheel separation (z axis)
-const WHEELBASE = 0.72;   // front-rear separation (x axis)
+// Clearpath Husky A200 geometry (matches public/robots/husky/husky.urdf)
+const WHEEL_RADIUS = 0.1651;
+const TRACK = 0.5708;     // wheel separation (z axis)
+const WHEELBASE = 0.512;  // front-rear separation (x axis)
 const MAX_WHEEL_SPEED = 30; // rad/s
 
 export class Sim {
@@ -124,12 +126,12 @@ export class Sim {
     const hubMat = new THREE.MeshStandardMaterial({ color: 0x99a3b0, roughness: 0.3, metalness: 0.6 });
 
     // Chassis rigid body
-    const spawnY = WHEEL_RADIUS + 0.12;
+    const spawnY = WHEEL_RADIUS + 0.02;
     this.chassisBody = this.world.createRigidBody(
       RAPIER.RigidBodyDesc.dynamic().setTranslation(0, spawnY, 0).setCanSleep(false));
     this.selfColliders = new Set(); // rover's own colliders — lidar must ignore these
     this.chassisCollider = this.world.createCollider(
-      RAPIER.ColliderDesc.cuboid(0.42, 0.10, 0.26).setDensity(80), this.chassisBody);
+      RAPIER.ColliderDesc.cuboid(0.49, 0.12, 0.30).setDensity(320), this.chassisBody);
     this.selfColliders.add(this.chassisCollider.handle);
 
     // Chassis visual group
@@ -169,12 +171,13 @@ export class Sim {
       const wheelCollider = this.world.createCollider(
         RAPIER.ColliderDesc.cylinder(0.05, WHEEL_RADIUS)
           .setRotation({ x: rot.x, y: rot.y, z: rot.z, w: rot.w })
-          .setDensity(30).setFriction(1.0), body);
+          .setDensity(300).setFriction(1.0), body);
       this.selfColliders.add(wheelCollider.handle);
 
       const params = RAPIER.JointData.revolute(
         { x: p.x, y: 0, z: p.z }, { x: 0, y: 0, z: 0 }, { x: 0, y: 0, z: 1 });
       const joint = this.world.createImpulseJoint(params, this.chassisBody, body, true);
+      joint.setContactsEnabled(false); // chassis and wheel colliders overlap slightly
 
       // Wheel visual: tire + hub + spokes
       const wg = new THREE.Group();
@@ -188,8 +191,28 @@ export class Sim {
         wg.add(spoke);
       }
       this.scene.add(wg);
-      this.wheels.push({ body, joint, mesh: wg, side: p.side });
+      this.wheels.push({ body, joint, mesh: wg, side: p.side, spin: 0 });
     }
+
+    // Swap in the real Clearpath Husky URDF model (procedural stays as fallback)
+    this.urdfInfo = { name: 'Clearpath Husky A200', path: 'robots/husky/husky.urdf' };
+    loadURDF(this.urdfInfo.path).then(({ robot, wrapper }) => {
+      if (this._disposed) return;
+      this.urdfRobot = robot;
+      this.urdfWrapper = wrapper;
+      // URDF base_link origin sits 0.03282 m below the wheel axles (physics chassis center)
+      wrapper.children[0].position.y = -0.03282;
+      this.scene.add(wrapper);
+      // hide procedural hull + wheels; keep the lidar puck (sensor add-on) on the Husky top plate
+      this.chassisMesh.visible = false;
+      for (const w of this.wheels) w.mesh.visible = false;
+      this.lidarPuck2 = this.lidarPuck.clone();
+      const ring2 = new THREE.Mesh(new THREE.CylinderGeometry(0.061, 0.061, 0.02, 24),
+        new THREE.MeshBasicMaterial({ color: 0xff6a2b }));
+      this.lidarPuck2.position.set(0.1, 0.42, 0);
+      ring2.position.copy(this.lidarPuck2.position);
+      wrapper.add(this.lidarPuck2, ring2);
+    }).catch((e) => console.warn('Husky URDF failed to load, using fallback model:', e));
   }
 
   // Optional glowing goal beacon, used by the lesson system.
@@ -236,7 +259,7 @@ export class Sim {
 
   reset() {
     this.cmdVel = { linear: 0, angular: 0 };
-    const spawnY = WHEEL_RADIUS + 0.12;
+    const spawnY = WHEEL_RADIUS + 0.02;
     this.chassisBody.setTranslation({ x: 0, y: spawnY, z: 0 }, true);
     this.chassisBody.setRotation({ x: 0, y: 0, z: 0, w: 1 }, true);
     this.chassisBody.setLinvel({ x: 0, y: 0, z: 0 }, true);
@@ -259,13 +282,13 @@ export class Sim {
     const vRight = -(v + w * TRACK / 2) / WHEEL_RADIUS;
     for (const wheel of this.wheels) {
       const target = clamp(wheel.side === 'left' ? vLeft : vRight, -MAX_WHEEL_SPEED, MAX_WHEEL_SPEED);
-      wheel.joint.configureMotorVelocity(target, 800);
+      wheel.joint.configureMotorVelocity(target, 1.5e4);
     }
     // Yaw-rate feedback, standing in for the onboard chassis velocity controller:
     // skid-steer scrub makes open-loop turning far under-rotate, exactly as on
     // real rovers, which close this loop with the IMU.
     const yawErr = w - this.chassisBody.angvel().y;
-    this.chassisBody.applyTorqueImpulse({ x: 0, y: yawErr * 0.45, z: 0 }, true);
+    this.chassisBody.applyTorqueImpulse({ x: 0, y: yawErr * 2.5, z: 0 }, true);
   }
 
   _publishSensors(now) {
@@ -337,6 +360,20 @@ export class Sim {
       const wt = w.body.translation(), wr = w.body.rotation();
       w.mesh.position.set(wt.x, wt.y, wt.z);
       w.mesh.quaternion.set(wr.x, wr.y, wr.z, wr.w);
+    }
+    if (this.urdfWrapper) {
+      this.urdfWrapper.position.set(t.x, t.y, t.z);
+      this.urdfWrapper.quaternion.set(r.x, r.y, r.z, r.w);
+      // spin URDF wheel joints from each wheel body's lateral angular velocity
+      const q = new THREE.Quaternion(r.x, r.y, r.z, r.w);
+      const lat = new THREE.Vector3(0, 0, 1).applyQuaternion(q);
+      const names = ['front_left_wheel', 'front_right_wheel', 'rear_left_wheel', 'rear_right_wheel'];
+      this.wheels.forEach((w, i) => {
+        const av = w.body.angvel();
+        w.spin -= (av.x * lat.x + av.y * lat.y + av.z * lat.z) / 60; // ROS +y = sim -z
+        this.urdfRobot.joints[names[i]]?.setJointValue(w.spin);
+      });
+      if (this.lidarPuck2) this.lidarPuck2.rotation.y += 0.3;
     }
     this.lidarPuck.rotation.y += 0.3;
 
