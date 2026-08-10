@@ -6,13 +6,15 @@ const LESSONS = [
   { id: 'rover-2', timeout: 45 },
   { id: 'drone-1', timeout: 25 },
   { id: 'drone-2', timeout: 40 },
+  { id: 'arm-1', timeout: 30 },
+  { id: 'orbit-1', timeout: 60 },
 ];
 
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 const pageErrors = [];
 page.on('pageerror', (e) => pageErrors.push(String(e)));
-await page.goto('http://localhost:5199/', { waitUntil: 'networkidle' });
+await page.goto('http://localhost:5199/app.html', { waitUntil: 'networkidle' });
 await page.waitForTimeout(2500);
 
 for (const l of LESSONS) {

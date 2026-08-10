@@ -180,4 +180,103 @@ node.create_timer(0.1, () => {
 node.get_logger().info('flying to the ring…');
 `,
   },
+  {
+    id: 'arm-1',
+    title: 'Lesson 5 · Pick and Place (IK)',
+    platform: 'arm',
+    goal: null,
+    goalText: 'Use inverse kinematics to pick the green cube and drop it in the orange zone.',
+    check(t) {
+      return !t.attached && !t.gripper &&
+        Math.hypot(t.cubeX - t.dropZone.x, t.cubeZ - t.dropZone.z) < t.dropZone.radius &&
+        t.cubeY < 0.12;
+    },
+    starterCode: `// Lesson 5: pick and place with a 3-DOF arm.
+// Command joint angles on /joint_cmd: [yaw, shoulder, elbow] (radians).
+// The gripper: publish 'close' / 'open' on /gripper_cmd.
+// The cube sits at radius 0.55 m, yaw 0. The drop zone is at yaw +90°.
+
+const node = rcljs.create_node('pick_and_place');
+const jointPub = node.create_publisher('std_msgs/Float64MultiArray', '/joint_cmd');
+const gripPub = node.create_publisher('std_msgs/String', '/gripper_cmd');
+
+// --- 2-link inverse kinematics (this is the lesson!) ---
+// r: horizontal reach from the base axis, h: height of the wrist ABOVE the shoulder.
+// Returns [shoulder, elbow] angles, elbow-down.
+const L1 = 0.45, L2 = 0.40, SHOULDER_H = 0.35, HAND = 0.15;
+function ik(r, wristY) {
+  const h = wristY - SHOULDER_H;
+  const d2 = r * r + h * h, d = Math.sqrt(d2);
+  const cosE = (d2 - L1 * L1 - L2 * L2) / (2 * L1 * L2);
+  const elbow = -(Math.PI - Math.acos(Math.max(-1, Math.min(1, cosE))));
+  const alpha = Math.acos(Math.max(-1, Math.min(1, (d2 + L1 * L1 - L2 * L2) / (2 * L1 * d))));
+  const shoulder = Math.atan2(h, r) + alpha;
+  return [shoulder, elbow];
+}
+
+// waypoint sequence: [yaw, wrist r, wrist height, gripper, hold seconds]
+const CUBE_R = 0.55, CUBE_TOP = 0.18 + HAND;
+const steps = [
+  [0,          CUBE_R, CUBE_TOP + 0.15, 'open',  1.2],  // hover above cube
+  [0,          CUBE_R, CUBE_TOP,        'open',  2.0],  // descend
+  [0,          CUBE_R, CUBE_TOP,        'close', 1.2],  // grab
+  [0,          CUBE_R, CUBE_TOP + 0.2,  'close', 1.0],  // lift
+  [Math.PI/2,  CUBE_R, CUBE_TOP + 0.2,  'close', 1.6],  // swing to the zone
+  [Math.PI/2,  CUBE_R, 0.12 + HAND,     'close', 1.8],  // lower
+  [Math.PI/2,  CUBE_R, 0.12 + HAND,     'open',  0.8],  // release
+  [Math.PI/2,  CUBE_R, CUBE_TOP + 0.2,  'open',  1.0],  // retreat
+];
+
+let i = 0, elapsed = 0;
+node.create_timer(0.1, () => {
+  const [yaw, r, y, grip, hold] = steps[Math.min(i, steps.length - 1)];
+  const [shoulder, elbow] = ik(r, y);
+  jointPub.publish({ data: [yaw, shoulder, elbow] });
+  gripPub.publish({ data: grip });
+  elapsed += 0.1;
+  if (elapsed >= hold && i < steps.length - 1) { i++; elapsed = 0; }
+});
+
+node.get_logger().info('pick-and-place sequence started');
+`,
+  },
+  {
+    id: 'orbit-1',
+    title: 'Lesson 6 · Orbital Rendezvous',
+    platform: 'orbit',
+    goal: null,
+    goalText: 'Dock with the target: close to <1.5 m range at <0.15 m/s using /cmd_thrust.',
+    check(t) {
+      return t.range < 1.5 && t.relVel < 0.15;
+    },
+    starterCode: `// Lesson 6: orbital rendezvous.
+// You are 140 m from the target in the LVLH frame, governed by the real
+// Clohessy–Wiltshire equations (x radial, y along-track, z cross-track).
+// Command thrust acceleration on /cmd_thrust (m/s², clamped to ±0.5).
+// Note: in orbit, thrusting toward the target is NOT always the fastest way there —
+// watch how the trajectory curves. A PD controller fights the orbital dynamics for you.
+
+const node = rcljs.create_node('rendezvous_gnc');
+const thrustPub = node.create_publisher('geometry_msgs/Twist', '/cmd_thrust');
+
+let state = null;
+node.create_subscription('nav_msgs/Odometry', '/relative_state', (m) => { state = m; });
+
+const KP = 0.0001, KD = 0.02;   // try changing these — what happens at KD = 0.002?
+
+node.create_timer(0.1, () => {
+  const cmd = msgs.Twist();
+  if (state) {
+    const p = state.pose.position;      // meters, LVLH
+    const v = state.twist.linear;       // m/s
+    cmd.linear.x = -KP * p.x - KD * v.x;
+    cmd.linear.y = -KP * p.y - KD * v.y;
+    cmd.linear.z = -KP * p.z - KD * v.z;
+  }
+  thrustPub.publish(cmd);
+});
+
+node.get_logger().info('guidance active — beginning approach');
+`,
+  },
 ];

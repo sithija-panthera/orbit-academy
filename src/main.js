@@ -3,6 +3,8 @@ import editorWorker from 'monaco-editor/editor/editor.worker.js?worker';
 import tsWorker from 'monaco-editor/language/typescript/ts.worker.js?worker';
 import { Sim } from './sim/sim.js';
 import { DroneSim } from './sim/drone.js';
+import { ArmSim } from './sim/arm.js';
+import { OrbitSim } from './sim/orbit.js';
 import { Runner } from './runner.js';
 import { graph } from './ros/miniros.js';
 import { LESSONS } from './lessons.js';
@@ -106,7 +108,8 @@ async function loadLesson(lesson) {
   if (platformChanged) {
     if (sim) sim.dispose();
     const canvas = document.getElementById('sim-canvas');
-    sim = lesson.platform === 'drone' ? new DroneSim(canvas) : new Sim(canvas);
+    const PLATFORMS = { rover: Sim, drone: DroneSim, arm: ArmSim, orbit: OrbitSim };
+    sim = new (PLATFORMS[lesson.platform] ?? Sim)(canvas);
     window.__oa.sim = sim;
     try {
       await sim.init();
@@ -162,6 +165,14 @@ setInterval(() => {
 setInterval(() => {
   const t = sim?.telemetry;
   if (!t || t.x === undefined) return;
+  if (t.range !== undefined) {
+    hudTelemetry.textContent =
+      `range  ${t.range.toFixed(1)} m\n` +
+      `relvel ${t.relVel.toFixed(2)} m/s\n` +
+      `thrust ${t.cmdV.toFixed(3)} m/s²\n` +
+      `Δv     ${t.fuel.toFixed(1)} m/s`;
+    return;
+  }
   const alt = t.alt !== undefined ? `alt   ${t.alt.toFixed(2)} m\n` : '';
   hudTelemetry.textContent =
     `pos   (${t.x.toFixed(2)}, ${t.z.toFixed(2)}) m\n` + alt +

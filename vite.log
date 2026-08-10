@@ -163,3 +163,72 @@ Are they installed?
 4:01:43 pm [vite] (client) page reload src/main.js
 4:01:50 pm [vite] (client) page reload src/main.js
 4:01:59 pm [vite] (client) page reload src/main.js
+11:30:31 am [vite] (client) page reload src/lessons.js
+11:30:35 am [vite] (client) page reload src/main.js
+11:30:41 am [vite] (client) page reload src/main.js
+11:30:52 am [vite] (client) page reload src/main.js
+11:32:05 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:32:05 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:32:34 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:32:51 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:34:27 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:34:27 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:34:31 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:35:28 am [vite] (client) page reload src/sim/arm.js
+11:35:37 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:35:37 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:35:41 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:36:14 am [vite] (client) page reload src/sim/arm.js
+11:36:21 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:36:21 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:36:25 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:37:03 am [vite] (client) page reload src/sim/arm.js
+11:37:12 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:37:13 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:37:16 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:38:08 am [vite] (client) page reload src/sim/arm.js
+11:38:15 am [vite] (client) page reload src/sim/arm.js
+11:38:22 am [vite] (client) page reload src/sim/arm.js
+11:38:33 am [vite] (client) page reload src/sim/arm.js
+11:38:39 am [vite] (client) page reload src/sim/arm.js
+11:38:50 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:38:50 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:38:54 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:39:06 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:39:06 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:39:34 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:39:51 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:41:01 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:41:01 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:41:05 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:42:00 am [vite] (client) page reload src/sim/arm.js
+11:42:00 am [vite] (client) page reload src/lessons.js
+11:42:01 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:42:01 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:42:05 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:42:39 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:42:39 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:43:07 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:43:24 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:44:30 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:44:30 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:44:34 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:45:51 am [vite] (client) page reload src/sim/arm.js
+11:46:03 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:46:03 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:46:07 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:46:47 am [vite] (client) page reload src/sim/arm.js
+11:47:08 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:47:08 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:47:12 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:47:57 am [vite] (client) page reload src/sim/arm.js
+11:48:03 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:48:03 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:48:07 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:48:20 am [vite] (client) [console.warn] using deprecated parameters for the initialization function; pass a single object instead
+11:48:20 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:48:48 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:49:05 am [vite] (client) [console.warn] THREE.WebGLShadowMap: PCFSoftShadowMap has been deprecated. Using PCFShadowMap instead.
+11:49:56 am [vite] (client) hmr update /src/landing.css?direct
+11:49:56 am [vite] (client) page reload index.html
+11:50:04 am [vite] (client) page reload src/ai/gemini.js

@@ -9,7 +9,7 @@ const errors = [];
 page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
 page.on('pageerror', (e) => errors.push(String(e)));
 
-await page.goto('http://localhost:5199/', { waitUntil: 'networkidle' });
+await page.goto('http://localhost:5199/app.html', { waitUntil: 'networkidle' });
 await page.waitForTimeout(2500); // let physics/monaco init
 
 if (scenario === 'run') {

@@ -17,7 +17,13 @@ Platforms: a ROVER (subscribes /cmd_vel — linear.x m/s forward, angular.z rad/
 publishes /scan with 72 rays over 360° where index 0 = rear and the middle = forward,
 plus /odom and /imu at 10 Hz, ROS REP-103 body-frame conventions) and a DRONE
 (PX4-offboard-style /cmd_vel: linear.x/y body-frame m/s, linear.z climb rate,
-angular.z yaw rate; publishes /odom where position.z is altitude, and /imu).
+angular.z yaw rate; publishes /odom where position.z is altitude, and /imu),
+an ARM (3-DOF + gripper: /joint_cmd Float64MultiArray [yaw, shoulder, elbow] radians,
+/gripper_cmd 'open'/'close', publishes /joint_states; links L1=0.45 m, L2=0.40 m,
+shoulder at 0.35 m, gripper hangs 0.15 m — 2-link IK is the key concept), and a
+SATELLITE (LVLH relative motion under the real Clohessy–Wiltshire equations:
+x radial, y along-track, z cross-track; /cmd_thrust Twist = accel m/s² clamped ±0.5;
+/relative_state Odometry in meters — teach why thrusting straight at the target curves away).
 Explain concepts simply, use short answers, give hints before
 full solutions, and relate concepts to real ROS 2 so knowledge transfers.`;
 
