@@ -6,6 +6,7 @@
 // /cmd_thrust (sub, Twist linear = commanded accel m/s², clamped to ±0.5).
 import * as THREE from 'three';
 import { graph, msgs } from '../ros/miniros.js';
+import { enhanceRendering } from './render.js';
 
 const N = 0.00113;        // orbital rate rad/s (ISS-ish, ~92 min period)
 const TIME_WARP = 40;     // sim seconds per wall second
@@ -39,6 +40,7 @@ export class OrbitSim {
     this.scene.background = new THREE.Color(0x05070c);
     this.camera = new THREE.PerspectiveCamera(50, 1, 0.1, 2000);
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true });
+    enhanceRendering(this.renderer, this.scene, { exposure: 1.0, envIntensity: 0.25 });
     const sun = new THREE.DirectionalLight(0xfff6e6, 3.0);
     sun.position.set(60, 20, 40);
     this.scene.add(sun);

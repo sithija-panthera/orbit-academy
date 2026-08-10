@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import RAPIER from '@dimforge/rapier3d-compat';
 import { graph } from '../ros/miniros.js';
 import { loadURDF } from './urdf.js';
+import { enhanceRendering } from './render.js';
 
 // Universal Robots UR5 kinematics (matches public/robots/ur5/ur5.urdf)
 const L1 = 0.425;         // upper arm (a2)
@@ -49,14 +50,14 @@ export class ArmSim {
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true });
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    enhanceRendering(this.renderer, this.scene, { exposure: 1.15, envIntensity: 0.7 });
     const sun = new THREE.DirectionalLight(0xfff2e0, 2.2);
     sun.position.set(3, 6, 2);
     sun.castShadow = true;
     sun.shadow.mapSize.set(2048, 2048);
     for (const [k, v] of Object.entries({ left: -3, right: 3, top: 3, bottom: -3 })) sun.shadow.camera[k] = v;
     this.scene.add(sun);
-    this.scene.add(new THREE.HemisphereLight(0x44557a, 0x2a2018, 1.5));
-    this.scene.add(new THREE.AmbientLight(0x404550, 0.7));
+    this.scene.add(new THREE.HemisphereLight(0x44557a, 0x2a2018, 0.8));
 
     this._disposed = false;
     const onResize = () => {

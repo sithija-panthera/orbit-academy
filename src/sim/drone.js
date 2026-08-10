@@ -4,6 +4,8 @@
 import * as THREE from 'three';
 import RAPIER from '@dimforge/rapier3d-compat';
 import { graph, msgs } from '../ros/miniros.js';
+import { loadURDF } from './urdf.js';
+import { enhanceRendering } from './render.js';
 
 const MASS_ACCEL_XY = 6;   // max horizontal accel, m/s^2
 const G = 9.81;
@@ -35,6 +37,7 @@ export class DroneSim {
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true });
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    enhanceRendering(this.renderer, this.scene);
     const sun = new THREE.DirectionalLight(0xfff2e0, 2.4);
     sun.position.set(8, 16, 6);
     sun.castShadow = true;
@@ -42,8 +45,7 @@ export class DroneSim {
     sun.shadow.camera.left = -20; sun.shadow.camera.right = 20;
     sun.shadow.camera.top = 20; sun.shadow.camera.bottom = -20;
     this.scene.add(sun);
-    this.scene.add(new THREE.HemisphereLight(0x44557a, 0x2a2018, 1.6));
-    this.scene.add(new THREE.AmbientLight(0x404550, 0.6));
+    this.scene.add(new THREE.HemisphereLight(0x44557a, 0x2a2018, 0.9));
 
     this._disposed = false;
     const onResize = () => {
@@ -92,9 +94,10 @@ export class DroneSim {
 
   _buildDrone() {
     this.body = this.world.createRigidBody(
-      RAPIER.RigidBodyDesc.dynamic().setTranslation(0, 0.12, 0).setCanSleep(false)
+      RAPIER.RigidBodyDesc.dynamic().setTranslation(0, 0.03, 0).setCanSleep(false)
         .setLinearDamping(0.15).setAngularDamping(1.5));
-    this.world.createCollider(RAPIER.ColliderDesc.cuboid(0.22, 0.05, 0.22).setDensity(180), this.body);
+    // Crazyflie 2.x scale: 92 mm motor-to-motor, 27 g
+    this.world.createCollider(RAPIER.ColliderDesc.cuboid(0.05, 0.015, 0.05).setDensity(90), this.body);
     this.mass = this.body.mass();
 
     const bodyMat = new THREE.MeshStandardMaterial({ color: 0xd8dde5, roughness: 0.4, metalness: 0.3 });
@@ -124,8 +127,20 @@ export class DroneSim {
     const nose = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.03, 0.03), accentMat);
     nose.position.set(0.14, 0, 0);
     g.add(nose);
+    g.scale.setScalar(0.4); // procedural fallback sized to Crazyflie-ish scale
     this.mesh = g;
     this.scene.add(g);
+
+    // Swap in the real Bitcraze Crazyflie 2 model (MIT, gym-pybullet-drones)
+    this.urdfInfo = { name: 'Bitcraze Crazyflie 2.x', path: 'robots/cf2/cf2.urdf' };
+    loadURDF(this.urdfInfo.path).then(({ robot, wrapper }) => {
+      if (this._disposed) return;
+      this.urdfRobot = robot;
+      this.urdfWrapper = wrapper;
+      this.scene.add(wrapper);
+      this.mesh.visible = false;
+      this.props = []; // cf2 mesh has integrated props
+    }).catch((e) => console.warn('Crazyflie URDF failed to load, using fallback model:', e));
   }
 
   setGoal(goal) {
@@ -156,7 +171,7 @@ export class DroneSim {
 
   reset() {
     this.cmdVel = { vx: 0, vy: 0, vz: 0, wz: 0 };
-    this.body.setTranslation({ x: 0, y: 0.12, z: 0 }, true);
+    this.body.setTranslation({ x: 0, y: 0.03, z: 0 }, true);
     this.body.setRotation({ x: 0, y: 0, z: 0, w: 1 }, true);
     this.body.setLinvel({ x: 0, y: 0, z: 0 }, true);
     this.body.setAngvel({ x: 0, y: 0, z: 0 }, true);
@@ -199,14 +214,17 @@ export class DroneSim {
 
     // Yaw-rate controller + attitude leveling (roll/pitch spring to flat)
     const av = this.body.angvel();
-    const yawTorque = 0.4 * (this.cmdVel.wz - av.y);
+    // Attitude torques expressed as inertia-scaled angular accelerations:
+    // τ = I·(k·err). Rate gains must satisfy k·dt < 1 for the explicit
+    // integrator, so this stays stable from a 27 g Crazyflie to a 1.5 kg quad.
+    const I = this.mass * 1.67e-3; // ≈ box inertia about any axis
     const up = new THREE.Vector3(0, 1, 0).applyQuaternion(q);
     const levelAxis = new THREE.Vector3().crossVectors(up, new THREE.Vector3(0, 1, 0));
     this.body.resetTorques(true);
     this.body.addTorque({
-      x: levelAxis.x * 2.0 - av.x * 0.5,
-      y: yawTorque,
-      z: levelAxis.z * 2.0 - av.z * 0.5,
+      x: I * (levelAxis.x * 25 - av.x * 8),
+      y: I * 12 * (this.cmdVel.wz - av.y),
+      z: I * (levelAxis.z * 25 - av.z * 8),
     }, true);
 
     this._lastAccel = { x: ax, z: az };
@@ -262,8 +280,12 @@ export class DroneSim {
     for (const p of this.props) p.rotation.y += 1.1;
     if (this.goalMesh) this.goalMesh.rotation.y += 0.02;
 
-    const target = new THREE.Vector3(t.x, t.y + 0.2, t.z);
-    const camGoal = new THREE.Vector3(t.x - 4, t.y + 2.5, t.z + 4);
+    if (this.urdfWrapper) {
+      this.urdfWrapper.position.copy(this.mesh.position);
+      this.urdfWrapper.quaternion.copy(this.mesh.quaternion);
+    }
+    const target = new THREE.Vector3(t.x, t.y + 0.03, t.z);
+    const camGoal = new THREE.Vector3(t.x - 1.1, t.y + 0.65, t.z + 1.1);
     this.camera.position.lerp(camGoal, 0.05);
     this.camera.lookAt(target);
   }

@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import RAPIER from '@dimforge/rapier3d-compat';
 import { graph, msgs } from '../ros/miniros.js';
 import { loadURDF } from './urdf.js';
+import { enhanceRendering } from './render.js';
 
 // Clearpath Husky A200 geometry (matches public/robots/husky/husky.urdf)
 const WHEEL_RADIUS = 0.1651;
@@ -41,6 +42,7 @@ export class Sim {
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true });
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    enhanceRendering(this.renderer, this.scene);
 
     const sun = new THREE.DirectionalLight(0xfff2e0, 2.4);
     sun.position.set(8, 14, 6);
@@ -49,8 +51,7 @@ export class Sim {
     sun.shadow.camera.left = -15; sun.shadow.camera.right = 15;
     sun.shadow.camera.top = 15; sun.shadow.camera.bottom = -15;
     this.scene.add(sun);
-    this.scene.add(new THREE.HemisphereLight(0x44557a, 0x2a2018, 1.6));
-    this.scene.add(new THREE.AmbientLight(0x404550, 0.6));
+    this.scene.add(new THREE.HemisphereLight(0x44557a, 0x2a2018, 0.9));
 
     this._disposed = false;
     const onResize = () => {
