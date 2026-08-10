@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbit Academy — Learn Robotics by Doing</title>
+  <meta name="description" content="Write real robot code against real physics — rovers, drones, ROS 2 patterns and an AI tutor, all in your browser." />
+  <script type="module" crossorigin src="./assets/index-BXnVjgqd.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-Czjbc987.js">
+  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-P2Xu9kJm.js">
+  <link rel="stylesheet" crossorigin href="./assets/landing-CXsBafda.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="brand"><span class="logo">◱</span> ORBIT<span class="accent">ACADEMY</span></div>
+    <nav class="nav-links">
+      <a href="#curriculum">Curriculum</a>
+      <a href="./dashboard.html">Dashboard</a>
+      <a class="btn-launch" href="./app.html">Launch simulator</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">// browser-native robotics education</div>
+        <h1>Write real robot code.<br />Watch real physics obey.</h1>
+        <p class="lede">
+          Drive rovers and fly drones with the same node-and-topic patterns used on
+          real ROS 2 robots. The physics engine is real, the lidar is real, and your
+          code runs against both — no installs, no hardware, no cost.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-launch big" href="./app.html">Start Lesson 1 — free</a>
+          <a class="btn-ghost" href="#how">How it works</a>
+        </div>
+        <div class="hero-meta">runs entirely in your browser · progress saved to your account</div>
+      </div>
+      <div class="hero-sim">
+        <div class="sim-frame">
+          <div class="sim-titlebar"><span class="dot"></span>/scan · 72 rays · 10 Hz</div>
+          <canvas id="lidar-canvas" width="420" height="420" aria-label="Live lidar sweep demo"></canvas>
+          <div class="sim-readout" id="lidar-readout">min range — m</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="strip" id="how">
+      <div class="strip-item">
+        <h3>Real robots, real physics</h3>
+        <p>Real robot models — Clearpath Husky, Universal Robots UR5 — loaded from their actual URDFs, driven by rigid-body physics with motors, friction and thrust.</p>
+      </div>
+      <div class="strip-item">
+        <h3>Real ROS 2 patterns</h3>
+        <p>Nodes, publishers, subscriptions, timers, <code>/cmd_vel</code> and <code>/odom</code>. What you write here transfers line-for-line to a real robot.</p>
+      </div>
+      <div class="strip-item">
+        <h3>AI tutor on board</h3>
+        <p>Stuck? The tutor reads your code and your console output, then hints before it answers — like a good TA, not an answer key.</p>
+      </div>
+      <div class="strip-item">
+        <h3>Goals, not videos</h3>
+        <p>Every lesson is a mission with an automatic checker. You pass when the robot does the thing.</p>
+      </div>
+    </section>
+
+    <section class="curriculum" id="curriculum">
+      <div class="section-head">
+        <h2>Curriculum</h2>
+        <div class="section-sub">$ ros2 topic list --lessons</div>
+      </div>
+      <a class="lesson-row" href="./app.html">
+        <span class="lesson-topic">/lessons/rover/obstacle_avoidance</span>
+        <span class="lesson-desc">Drive with /cmd_vel, read the lidar, survive 8 m</span>
+        <span class="lesson-tag rover">ROVER</span>
+      </a>
+      <a class="lesson-row" href="./app.html">
+        <span class="lesson-topic">/lessons/rover/go_to_goal</span>
+        <span class="lesson-desc">P-controller on heading from /odom — reach the beacon</span>
+        <span class="lesson-tag rover">ROVER</span>
+      </a>
+      <a class="lesson-row" href="./app.html">
+        <span class="lesson-topic">/lessons/drone/takeoff_hover</span>
+        <span class="lesson-desc">Altitude hold with a climb-rate controller</span>
+        <span class="lesson-tag drone">DRONE</span>
+      </a>
+      <a class="lesson-row" href="./app.html">
+        <span class="lesson-topic">/lessons/drone/ring_flight</span>
+        <span class="lesson-desc">3D waypoint flight — yaw, climb, cruise through the ring</span>
+        <span class="lesson-tag drone">DRONE</span>
+      </a>
+      <a class="lesson-row" href="./app.html">
+        <span class="lesson-topic">/lessons/arm/pick_and_place</span>
+        <span class="lesson-desc">Inverse kinematics on a gravity-loaded 3-DOF arm</span>
+        <span class="lesson-tag arm">ARM</span>
+      </a>
+      <a class="lesson-row" href="./app.html">
+        <span class="lesson-topic">/lessons/orbit/rendezvous</span>
+        <span class="lesson-desc">Clohessy–Wiltshire relative motion — dock with a satellite</span>
+        <span class="lesson-tag sat">SAT</span>
+      </a>
+      <div class="lesson-row coming">
+        <span class="lesson-topic">/lessons/sub/depth_hold</span>
+        <span class="lesson-desc">Buoyancy, drag and depth control underwater</span>
+        <span class="lesson-tag">SOON</span>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>The robot is waiting.</h2>
+      <a class="btn-launch big" href="./app.html">Launch the simulator</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Orbit Academy</span>
+    <span>built for students who'd rather build robots</span>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!-- Clearpath Husky A200 — trimmed from the official husky_description
+     (BSD-3-Clause, Clearpath Robotics). Real kinematics: wheelbase 0.512 m,
+     track 0.5708 m, wheel radius 0.1651 m. Frames follow ROS REP-103 (z-up). -->
+<robot name="husky">
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="meshes/base_link.dae"/></geometry>
+    </visual>
+  </link>
+
+  <link name="top_plate_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="meshes/top_plate.dae"/></geometry>
+    </visual>
+  </link>
+  <joint name="top_plate_joint" type="fixed">
+    <parent link="base_link"/><child link="top_plate_link"/>
+    <origin xyz="0.0812 0 0.245" rpy="0 0 0"/>
+  </joint>
+
+  <link name="user_rail_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><mesh filename="meshes/user_rail.dae"/></geometry>
+    </visual>
+  </link>
+  <joint name="user_rail_joint" type="fixed">
+    <parent link="base_link"/><child link="user_rail_link"/>
+    <origin xyz="0.272 0 0.245" rpy="0 0 0"/>
+  </joint>
+
+  <link name="front_bumper_link">
+    <visual><geometry><mesh filename="meshes/bumper.dae"/></geometry></visual>
+  </link>
+  <joint name="front_bumper_joint" type="fixed">
+    <parent link="base_link"/><child link="front_bumper_link"/>
+    <origin xyz="0.48 0 0.091" rpy="0 0 0"/>
+  </joint>
+
+  <link name="rear_bumper_link">
+    <visual><geometry><mesh filename="meshes/bumper.dae"/></geometry></visual>
+  </link>
+  <joint name="rear_bumper_joint" type="fixed">
+    <parent link="base_link"/><child link="rear_bumper_link"/>
+    <origin xyz="-0.48 0 0.091" rpy="0 0 3.14159"/>
+  </joint>
+
+  <link name="front_left_wheel_link">
+    <visual><geometry><mesh filename="meshes/wheel.dae"/></geometry></visual>
+  </link>
+  <joint name="front_left_wheel" type="continuous">
+    <parent link="base_link"/><child link="front_left_wheel_link"/>
+    <origin xyz="0.256 0.2854 0.03282" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="front_right_wheel_link">
+    <visual><geometry><mesh filename="meshes/wheel.dae"/></geometry></visual>
+  </link>
+  <joint name="front_right_wheel" type="continuous">
+    <parent link="base_link"/><child link="front_right_wheel_link"/>
+    <origin xyz="0.256 -0.2854 0.03282" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="rear_left_wheel_link">
+    <visual><geometry><mesh filename="meshes/wheel.dae"/></geometry></visual>
+  </link>
+  <joint name="rear_left_wheel" type="continuous">
+    <parent link="base_link"/><child link="rear_left_wheel_link"/>
+    <origin xyz="-0.256 0.2854 0.03282" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="rear_right_wheel_link">
+    <visual><geometry><mesh filename="meshes/wheel.dae"/></geometry></visual>
+  </link>
+  <joint name="rear_right_wheel" type="continuous">
+    <parent link="base_link"/><child link="rear_right_wheel_link"/>
+    <origin xyz="-0.256 -0.2854 0.03282" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+</robot>
